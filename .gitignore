@@ -1,4 +1,7 @@
 # Ignore everything in this directory
 src\.env
+.DS_Store
+.thumbs.db
+node_modules
 # Except this file
 !.gitignore
