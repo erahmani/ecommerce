@@ -1,4 +1,4 @@
 # Ignore everything in this directory
-
+src\.env
 # Except this file
 !.gitignore
