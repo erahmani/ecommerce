@@ -1,10 +1,10 @@
 const express = require("express");
 const dotenv = require("dotenv");
 const mongoose = require('mongoose');
+const authRoutes = require("./routes/auth");
+const userRoutes = require("./routes/users")
 
 dotenv.config({path:`${__dirname}\\.env`});
-
-const authRoutes = require("./routes/auth");
 
 const app = express();
 const PORT = process.env.PORT || 3000;
@@ -18,6 +18,7 @@ mongoose.connect(process.env.MONGO_URI,{
 
 app.use(express.json());
 app.use("/auth", authRoutes);
+app.use("/api/v1/users", userRoutes)
 
 app.get("/", (req, res) => {
   res.json({ message: "Welcome to Week 1 Setup" });
