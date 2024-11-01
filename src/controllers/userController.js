@@ -12,7 +12,7 @@ exports.createUser = async(req, res)=>{
         const newUser = new User({username, password: hashedPassword, email});
         await newUser.save();
         res.status(201).json({message: 'User created successfully', user:{_id: newUser._id, userName: newUser.username, 
-            email: newUser.email, createdAt: newUser.createdAt}})
+            email: newUser.email}})
     }catch(error){
         res.status(500).json({message:'Error creating user', error})
     }
@@ -43,11 +43,11 @@ exports.getUserById = async(req, res) => {
 exports.updateUser = async (req,res)=> {
     try{
         const {username, email} = req.body;
-        const user = await User.findByIdAndUpdate(req.params.id, { username, email }, { projection:'-password -__v -id', new:true, runValidators:true})
+        const user = await User.findByIdAndUpdate(req.params.id, { username, email }, { projection:'-password -__v -_id', new:true, runValidators:true})
         if(!user){
             return res.status(404).json({message:'User not found'});
         }
-        res.json({message:'User updated successfully', user})
+        res.status(200).json({message:'User updated successfully', user})
     }catch(error){
         res.status(500).json({message:'Error updating user',error});
     }    
@@ -59,7 +59,7 @@ exports.deleteUser = async(req, res) =>{
         if(!user){
             res.status(404).json({message:'User not found'});
         }
-        res.json({message:'User deleted successfully'})
+        res.status(204).json({message:'User deleted successfully'})
     }catch(error){
         res.status(500).json({ message: 'Error deleting user', error });
     }
