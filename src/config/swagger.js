@@ -59,7 +59,7 @@
  *       "200":
  *          content:
  *             application/json:
- *               schema: 
+ *               schema:
  *                  type: array
  *                  items:
  *                      types: object
@@ -82,7 +82,7 @@
  *                    message:
  *                      type: string
  *                    error:
- *                      type: object          
+ *                      type: object
  *  /api/v1/users/{id}:
  *    get:
  *      summery: Retrieve a user.
@@ -107,7 +107,7 @@
  *                    email:
  *                      type: string
  *                    createdAt:
- *                      type: string  
+ *                      type: string
  *        "404":
  *           description: User not found.
  *           content:
@@ -116,7 +116,7 @@
  *                  type: object
  *                  properties:
  *                     message:
- *                        type: string   
+ *                        type: string
  *        "500":
  *           description: Error retrieving a user.
  *           content:
@@ -143,7 +143,7 @@
  *         content:
  *            application/json:
  *              schema:
- *                type: object 
+ *                type: object
  *                properties:
  *                  username:
  *                    type: string
@@ -166,7 +166,7 @@
  *                          email:
  *                              type: string
  *                          createdAt:
- *                              type: string 
+ *                              type: string
  *        "404":
  *           description: User not found.
  *           content:
@@ -221,7 +221,7 @@
  *                 schema:
  *                    type: object
  *                    properties:
- *                       message: 
+ *                       message:
  *                          type: string
  *                       error:
  *                          type: object
@@ -240,5 +240,5 @@
  *            - username
  *            - password
  *            - email
- *  
+ *
  */
