@@ -3,7 +3,9 @@ const AttributeRule = require('../models/attributeRule');
 
 exports.createOrUpdateAttributeRule = async(req, res)=>{
   try {
-    const {categoryName, requiredAttributes, optionalAttributes} = req.body;
+    // eslint-disable-next-line prefer-const
+    let {categoryName, requiredAttributes, optionalAttributes} = req.body;
+    categoryName = categoryName.toLowerCase();
     const attributeRule = await AttributeRule.findOneAndUpdate(
       req.params.id,
       {categoryName, requiredAttributes, optionalAttributes},
@@ -26,7 +28,8 @@ exports.getAllAttributeRules = async(req, res)=>{
 
 exports.getAttributeRuleByCategory = async(req, res)=>{
   try {
-    const attributeRule = await AttributeRule.findOne({categoryName: req.params.categoryName});
+    const categoryName = req.params.categoryName;
+    const attributeRule = await AttributeRule.findOne({categoryName: categoryName?.toLowerCase()});
     if (!attributeRule) {
       res.status(404).json({message: 'AttributeRule not found'});
     }

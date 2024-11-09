@@ -3,7 +3,9 @@ const Category = require('../models/category');
 
 exports.createCategory = async(req, res) => {
   try {
-    const {name, description} = req.body;
+    // eslint-disable-next-line prefer-const
+    let {name, description} = req.body;
+    name = name.toLowerCase();
     const category = new Category({name, description});
     await category.save();
     res.status(201).json({message: 'Category created successfully', category});
@@ -32,7 +34,9 @@ exports.getCategoryById = async(req, res) => {
 
 exports.updateCategory = async(req, res) => {
   try {
-    const {name, description} = req.body;
+    // eslint-disable-next-line prefer-const
+    let {name, description} = req.body;
+    name = name.toLowerCase();
     const category = Category.findByIdAndUpdate(
       req.params.id,
       {name, description},

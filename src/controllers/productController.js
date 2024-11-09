@@ -3,7 +3,9 @@ const Product = require('../models/product');
 
 exports.createProduct = async(req, res)=> {
   try {
-    const { name, price, description, category, extraAttributes } = req.body;
+    // eslint-disable-next-line prefer-const
+    let { name, price, description, category, extraAttributes } = req.body;
+    category = category.toLowerCase();
     const product = new Product({name, price, description, category, extraAttributes});
     await product.save();
     return res.status(201).json({ message: 'Product created successfully', product });
@@ -32,7 +34,9 @@ exports.getProductById = async(req, res)=>{
 
 exports.updateProduct = async(req, res)=>{
   try {
-    const { name, price, description, category, extraAttributes} = req.body;
+    // eslint-disable-next-line prefer-const
+    let { name, price, description, category, extraAttributes} = req.body;
+    category = category.toLowerCase();
     const product = await Product.findByIdAndUpdate(
       req.params.id,
       { name, price, description, category, extraAttributes},

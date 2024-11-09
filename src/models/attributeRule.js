@@ -6,10 +6,10 @@ const attributeRuleSchema = new mongoose.Schema({
     required: true,
     unique: true
   },
-  requiredAttrs:[{
+  requiredAttributes:[{
     type: String
   }],
-  optionalAttrs:[{
+  optionalAttributes:[{
     type: String
   }],
   createdAt:{
