@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const attributeRuleSchema = new mongoose.schema({
+const attributeRuleSchema = new mongoose.Schema({
   categoryName:{
     type: String,
     required: true,
